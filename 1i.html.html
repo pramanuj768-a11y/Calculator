@@ -1,0 +1,145 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Math Training Game</title>
+
+<style>
+
+body{
+font-family:Arial;
+text-align:center;
+background:linear-gradient(135deg,#ff7e00,#ffcc00);
+color:white;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+#game{
+background:rgba(0,0,0,0.7);
+padding:40px;
+border-radius:15px;
+width:420px;
+box-shadow:0 10px 40px rgba(0,0,0,0.5);
+}
+
+#score{
+font-size:22px;
+margin-bottom:20px;
+color:#ffd700;
+}
+
+#question{
+font-size:42px;
+margin:20px 0;
+}
+
+input{
+font-size:22px;
+padding:10px;
+width:100px;
+text-align:center;
+border:none;
+border-radius:5px;
+}
+
+button{
+padding:10px 20px;
+font-size:18px;
+border:none;
+background:#ffd700;
+cursor:pointer;
+border-radius:5px;
+margin-left:10px;
+}
+
+#animeImage{
+display:none;
+margin-top:20px;
+}
+
+#animeImage img{
+width:260px;
+border-radius:12px;
+animation:pop 0.6s ease;
+}
+
+@keyframes pop{
+0%{transform:scale(0.6);}
+100%{transform:scale(1);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="game">
+
+<h1>Math Training</h1>
+
+<div id="score">Score: 0</div>
+
+<div id="question"></div>
+
+<input id="answer" type="number">
+<button onclick="checkAnswer()">Submit</button>
+
+<div id="message"></div>
+
+<div id="animeImage">
+<img src="https://photogallery.indiatimes.com/Sunny-Leone-hot-photos/morphshow/64015717.cms?from=mdr">
+</div>
+
+</div>
+
+<script>
+
+let num1, num2
+let score = 0
+
+function newQuestion(){
+
+num1 = Math.floor(Math.random()*10)
+num2 = Math.floor(Math.random()*10)
+
+document.getElementById("question").innerText = num1 + " + " + num2
+
+document.getElementById("answer").value=""
+document.getElementById("animeImage").style.display="none"
+document.getElementById("message").innerText=""
+
+}
+
+function checkAnswer(){
+
+let user = Number(document.getElementById("answer").value)
+
+if(user === num1 + num2){
+
+score++
+
+document.getElementById("score").innerText = "Score: " + score
+
+document.getElementById("message").innerText="Correct!"
+
+document.getElementById("animeImage").style.display="block"
+
+setTimeout(newQuestion,2000)
+
+}else{
+
+document.getElementById("message").innerText="Wrong! Try again!"
+
+}
+
+}
+
+newQuestion()
+
+</script>
+
+</body>
+</html>
